@@ -1,9 +1,9 @@
-module com.example.cs213projectthree {
+module banking {
     requires javafx.controls;
     requires javafx.fxml;
     requires junit;
 
 
-    opens com.example.cs213projectthree to javafx.fxml;
-    exports com.example.cs213projectthree;
+    opens banking to javafx.fxml;
+    exports banking;
 }

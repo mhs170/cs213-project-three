@@ -1,9 +1,9 @@
-package com.example.cs213projectthree;
+package banking;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class TransactionManagerController {
     @FXML
     private Label welcomeText;
 
