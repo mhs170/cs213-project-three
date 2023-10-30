@@ -149,6 +149,11 @@ public class AccountDatabase {
     } //check if account exists using contains(), update balance, return
     // false if insufficient fund
 
+    /**
+     * Deposit to an account
+     * @param account dummyAccount with important details
+     * @return true if deposited, false if amount incorrect
+     */
     public void deposit(Account account) {
         double amountToDeposit = account.getBalance();
         Account actualAccount = accounts[find(account)];
