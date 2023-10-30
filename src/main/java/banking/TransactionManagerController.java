@@ -191,12 +191,15 @@ public class TransactionManagerController {
             Date dob = createDate(dobString);
             if(!dateIsValid(dob, dobString)) return;
 
-            //parse amount (throws exception)
-            if(amountStr.isEmpty()) {
-                print(output, "Please enter a valid amount.");
-                return;
+            double amount = 0.0;
+            if(!action.equals("Close")) {
+                //parse amount (throws exception)
+                if(amountStr.isEmpty()) {
+                    print(output, "Please enter a valid amount.");
+                    return;
+                }
+                amount = Double.parseDouble(amountStr);
             }
-            Double amount = Double.parseDouble(amountStr);
 
             //run action
             switch (action) {
@@ -209,7 +212,12 @@ public class TransactionManagerController {
                         isLoyal,
                         amount
                 );
-                case "Close" -> {}
+                case "Close" -> CloseAccount(
+                        firstName,
+                        lastName,
+                        dob,
+                        accountType
+                );
                 case "Deposit" -> {}
                 case "Withdraw" -> {}
             }
@@ -219,7 +227,7 @@ public class TransactionManagerController {
         }
     }
 
-    //*** helper methods ***//
+    //*** general helper methods ***//
 
     /**
      * Print out a string by appending it to a TEXT AREA
@@ -241,6 +249,16 @@ public class TransactionManagerController {
         output.appendText(outputString);
     }
 
+    public String abbreviateType(String accountType) {
+        return switch(accountType) {
+            case "Checking"         -> "C";
+            case "College Checking" -> "CC";
+            case "Savings"          -> "S";
+            case "Money Market"     -> "MM";
+            default                 -> "Incorrect type";
+        };
+    }
+
     /**
      * Print some account status
      *
@@ -255,23 +273,8 @@ public class TransactionManagerController {
                 profile.getFname(),
                 profile.getLname(),
                 profile.getDob(),
-                accountType,
+                abbreviateType(accountType),
                 status);
-    }
-
-    /**
-     * Print that the account is opened, or it's already in database
-     *
-     * @param profile     the profile of the account
-     * @param accountType the account type
-     */
-    private void printOpenStatus(
-            Profile profile, String accountType, boolean opened
-    ) {
-        String status;
-        if (opened) status = "opened.";
-        else status = "is already in the database.";
-        printStatus(profile, accountType, status);
     }
 
 
@@ -322,6 +325,21 @@ public class TransactionManagerController {
     //*** methods for opening an account ***//
 
     /**
+     * Print that the account is opened, or it's already in database
+     *
+     * @param profile     the profile of the account
+     * @param accountType the account type
+     */
+    private void printOpenStatus(
+            Profile profile, String accountType, boolean opened
+    ) {
+        String status;
+        if (opened) status = "opened.";
+        else status = "is already in the database.";
+        printStatus(profile, accountType, status);
+    }
+
+    /**
      * Create checking account
      *
      * @param firstName      first name of user
@@ -338,7 +356,7 @@ public class TransactionManagerController {
         Profile profile = new Profile(firstName, lastName, dateOfBirth);
         Checking account = new Checking(profile, initialDeposit);
         boolean openSuccess = database.open(account);
-        printOpenStatus(profile, "C", openSuccess);
+        printOpenStatus(profile, "Checking", openSuccess);
     }
 
     /**
@@ -376,7 +394,7 @@ public class TransactionManagerController {
         CollegeChecking account = new CollegeChecking(profile,
                 initialDeposit, campusObj);
         boolean openSuccess = database.open(account);
-        printOpenStatus(profile, "CC", openSuccess);
+        printOpenStatus(profile, "College Checking", openSuccess);
     }
 
     /**
@@ -398,7 +416,7 @@ public class TransactionManagerController {
         Profile profile = new Profile(firstName, lastName, dateOfBirth);
         Savings account = new Savings(profile, initialDeposit, isLoyal);
         boolean openSuccess = database.open(account);
-        printOpenStatus(profile, "S", openSuccess);
+        printOpenStatus(profile, "Savings", openSuccess);
     }
 
     /**
@@ -425,14 +443,14 @@ public class TransactionManagerController {
         MoneyMarket account = new MoneyMarket(profile, initialDeposit,
                 true, 0);
         boolean openSuccess = database.open(account);
-        printOpenStatus(profile, "MM", openSuccess);
+        printOpenStatus(profile, "Money Market", openSuccess);
     }
 
     /**
      * Creates an account
      * @param firstName string first name
      * @param lastName string last name
-     * @param dob date of birth
+     * @param dateOfBirth date of birth
      * @param accountType type of account
      * @param campus string campus
      * @param isLoyal boolean is loyal
@@ -441,14 +459,14 @@ public class TransactionManagerController {
     private void OpenAccount(
             String firstName,
             String lastName,
-            Date dob,
+            Date dateOfBirth,
             String accountType,
             String campus,
             boolean isLoyal,
             Double initialDeposit
     ) {
-            if (dob.getYearsSince() < 16){
-                print(output, "DOB invalid: " + dob + " under 16.");
+            if (dateOfBirth.getYearsSince() < 16){
+                print(output, "DOB invalid: " + dateOfBirth + " under 16.");
                 return;
             }
 
@@ -460,18 +478,70 @@ public class TransactionManagerController {
 
             switch (accountType) {
                 case "Checking" -> OpenCheckingAccount(
-                        firstName, lastName, dob, initialDeposit
+                        firstName, lastName, dateOfBirth, initialDeposit
                 );
                 case "College Checking" -> OpenCollegeCheckingAccount(
-                        firstName, lastName, dob, initialDeposit, campus
+                        firstName, lastName, dateOfBirth, initialDeposit, campus
                 );
                 case "Savings" -> OpenSavingsAccount(
-                        firstName, lastName, dob, initialDeposit, isLoyal
+                        firstName, lastName, dateOfBirth, initialDeposit, isLoyal
                 );
                 case "Money Market" -> OpenMoneyMarketAccount(
-                        firstName, lastName, dob, initialDeposit
+                        firstName, lastName, dateOfBirth, initialDeposit
                 );
             }
+    }
+
+    //*** methods for closing an account ***//
+
+    /**
+     * Method that prints result of close method
+     *
+     * @param profile     Profile associated with account
+     * @param accountType type of account
+     * @param closed      if account is closed, true
+     */
+    private void printCloseStatus(
+            Profile profile, String accountType, boolean closed
+    ) {
+        if (closed) {
+            String status = "has been closed.";
+            printStatus(profile, accountType, status);
+        }
+    }
+
+    /**
+     * Close an account
+     * @param firstName string first name
+     * @param lastName string last name
+     * @param dateOfBirth date of birth
+     * @param accountType type of account
+     */
+    private void CloseAccount(
+            String firstName,
+            String lastName,
+            Date dateOfBirth,
+            String accountType
+    ) {
+            Profile holder = new Profile(firstName, lastName, dateOfBirth);
+            Account account = switch(accountType) {
+                case "Checking" -> new Checking(holder, 0);
+                case "College Checking" -> new CollegeChecking(
+                        holder, 0, Campus.NEWARK
+                );
+                case "Savings" -> new Savings(
+                        holder, 0, false
+                );
+                case "Money Market" -> new MoneyMarket(
+                        holder, 0, false,0);
+                default -> null;
+            };
+            if (!database.contains(account)){
+                printStatus(holder, accountType, "is not in the database.");
+                return;
+            }
+            boolean close = database.close(account);
+            printCloseStatus(holder, accountType, close);
     }
 
 
