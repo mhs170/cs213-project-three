@@ -77,6 +77,9 @@ public class TransactionManagerController {
     public void onActionSelect(ActionEvent event) {
         String action = actionPicker.getValue();
 
+        //clear the form
+        clear(event);
+
         //change the ui to match which action is selected
         //make fields visible or invisible
         switch(action) {
@@ -135,12 +138,21 @@ public class TransactionManagerController {
     }
 
     @FXML
-    void submit(ActionEvent event) {
-        System.out.println("Submit button clicked!");
+    public void clear(ActionEvent event) {
+        firstNameField.clear();
+        lastNameField.clear();
+        dobPicker.getEditor().clear();
+        dobPicker.setValue(null);
+        accountTypePicker.setValue("Checking");
+        campusPicker.setValue("New Brunswick");
+        loyaltyCheckbox.setSelected(false);
+        amountField.clear();
     }
 
     @FXML
-    void clear(ActionEvent event) {
-        System.out.println("Clear button clicked!");
+    public void submit(ActionEvent event) {
+        System.out.println("Submit button clicked!");
     }
+
+
 }
