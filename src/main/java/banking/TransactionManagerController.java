@@ -186,8 +186,17 @@ public class TransactionManagerController {
             }
         }
         catch(NumberFormatException exp) {
-            output.appendText("Error: Amount must be a number.");
+            print(output, "Not a valid amount.");
         }
+    }
+
+    public void print(TextArea output, String string ) {
+        output.appendText(string + "\n");
+    }
+
+    public void printFormatted(TextArea output, String formattedString, Object ... args) {
+        String outputString = String.format(formattedString, args) + "\n";
+        output.appendText(outputString);
     }
 
     //** methods for handling creation, deletion, update **//
@@ -223,14 +232,14 @@ public class TransactionManagerController {
      */
     private boolean dateIsValid(Date date, String dateStr) {
         if (date == null) {
-            output.appendText(String.format("DOB invalid: %s not a" +
-                    " valid calendar date!%n", dateStr));
+            printFormatted(output, "DOB invalid: %s not a" +
+                    " valid calendar date!", dateStr);
             return false;
         }
 
         if (date.isToday() || date.isInFuture()) {
-            output.appendText(String.format("DOB invalid: %s cannot" +
-                    " be today or a future day.%n", dateStr));
+            printFormatted(output, "DOB invalid: %s cannot" +
+                    " be today or a future day.", dateStr);
             return false;
         }
         return true;
