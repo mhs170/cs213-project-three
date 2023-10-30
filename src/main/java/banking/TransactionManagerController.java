@@ -48,6 +48,23 @@ public class TransactionManagerController {
     @FXML
     private TextArea output;
 
+    //** SECOND TAB **//
+
+    @FXML
+    private Button printAllButton;
+
+    @FXML
+    private Button printInterestsAndFeesButton;
+
+    @FXML
+    private Button updateInterestsAndFeesButton;
+
+    @FXML
+    private Button loadFromFileButton;
+
+    @FXML
+    private TextArea outputTwo;
+
     @FXML
     public void initialize() { //runs automatically at the start
 
@@ -595,5 +612,22 @@ public class TransactionManagerController {
         boolean isSuccess = database.withdraw(dummy);
         printWithdrawStatus(profile, accountType, isSuccess);
     }
+
+
+    //*** SECOND TAB ***//
+
+    public void printAll() {
+        //runs when printAll button is clicked
+
+        //print to output on second tab
+        print(outputTwo, "Test");
+        printFormatted(outputTwo, "Test %d", 1);
+    }
+
+    public void printInterestsAndFees() {}
+
+    public void updateInterestsAndFees() {}
+
+    public void loadFromFile () {}
 
 }
