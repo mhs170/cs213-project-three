@@ -17,6 +17,7 @@ public class TransactionManagerMain extends Application {
         stage.setTitle("Project 3 - Transaction Manager");
         stage.setScene(scene);
         stage.show();
+        stage.setMinWidth(650); //prevent window from being too small
     }
 
     public static void main(String[] args) {

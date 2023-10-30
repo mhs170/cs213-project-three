@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52ec96d8-df8c-4dd6-9e50-cda9a7d3498e" name="Changes" comment="initial files">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="52ec96d8-df8c-4dd6-9e50-cda9a7d3498e" name="Changes" comment="rename files according to project instructions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cs213projectthree/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/TransactionManagerMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cs213projectthree/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/TransactionManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cs213projectthree/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/banking/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/banking/TransactionManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/TransactionManagerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/banking/TransactionManagerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/TransactionManagerMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/banking/TransactionManagerView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/banking/TransactionManagerView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +41,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Dakshal/Code/School/ScreenBuilder/SceneBuilder.exe",
     "settings.editor.selected.configurable": "preferences.JavaFX"
   }
 }]]></component>
@@ -78,7 +75,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698338300754</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="rename files according to project instructions">
+      <option name="closed" value="true" />
+      <created>1698623996475</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1698623996475</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -94,7 +99,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial files" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial files" />
+    <MESSAGE value="rename files according to project instructions" />
+    <option name="LAST_COMMIT_MESSAGE" value="rename files according to project instructions" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
