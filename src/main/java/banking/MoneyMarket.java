@@ -1,4 +1,4 @@
-package transactionmanager;
+package banking;
 
 /**
  * Money Market class with constants for different fees and rates

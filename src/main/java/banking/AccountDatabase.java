@@ -1,4 +1,4 @@
-package transactionmanager;
+package banking;
 import java.text.DecimalFormat;
 /**
  * Account database for storing accounts with helper methods for

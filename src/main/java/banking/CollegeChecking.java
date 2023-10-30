@@ -1,4 +1,4 @@
-package transactionmanager;
+package banking;
 
 /**
  * Checking account class with constants for different fees and rates

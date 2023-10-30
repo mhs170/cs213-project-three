@@ -1,4 +1,4 @@
-package transactionmanager;
+package banking;
 
 /**
  * Abstract class that all accounts extend

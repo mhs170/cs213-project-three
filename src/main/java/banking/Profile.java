@@ -1,4 +1,4 @@
-package transactionmanager;
+package banking;
 
 /**
  * Profile class to store the first name, last name, and date of birth of

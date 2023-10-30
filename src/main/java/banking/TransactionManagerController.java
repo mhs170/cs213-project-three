@@ -7,6 +7,8 @@ import javafx.scene.text.Text;
 
 public class TransactionManagerController {
 
+    private AccountDatabase database;
+
     @FXML
     private ChoiceBox<String> actionPicker;
 
@@ -48,6 +50,11 @@ public class TransactionManagerController {
 
     @FXML
     public void initialize() {
+
+        //create database
+        database = new AccountDatabase(new Account[]{}, 0);
+
+        //initialize ChoiceBox dropdowns
 
         String[] actionTypes = {
                 "Open", "Close", "Deposit", "Withdraw"
@@ -157,11 +164,76 @@ public class TransactionManagerController {
     @FXML
     public void submit(ActionEvent event) {
         try {
+            String action = actionPicker.getValue();
+            String firstName = firstNameField.getText();
+            String lastName = lastNameField.getText();
+            String dobString = dobPicker.getEditor().getText();
+            String accountType = accountTypePicker.getValue();
+            String campus = campusPicker.getValue();
+            boolean isLoyal = loyaltyCheckbox.isSelected();
             Double amount = Double.parseDouble(amountField.getText());
+
+            //create date and check if valid
+            Date dob = createDate(dobString);
+            if(!dateIsValid(dob, dobString)) return;
+
+            //run corresponding function
+            switch (action) {
+                case "Open" -> {}
+                case "Close" -> {}
+                case "Deposit" -> {}
+                case "Withdraw" -> {}
+            }
         }
         catch(NumberFormatException exp) {
             output.appendText("Error: Amount must be a number.");
         }
+    }
+
+    //** methods for handling creation, deletion, update **//
+
+    /**
+     * Create and return Date object based on mm/dd/yyyy string input.
+     * If input is invalid, then return null.
+     *
+     * @param date a string in mm/dd/yyyy format
+     * @return Date object if valid date string, null if invalid
+     */
+    private Date createDate(String date) {
+        String dateFormatRegex =
+                "^(\\d{1,2}(/)\\d{1,2}(/)\\d{4})$";
+        if (!date.matches(dateFormatRegex)) return null;
+
+        String[] splitDate = date.split("/");
+        int month = Integer.parseInt(splitDate[0]);
+        int day = Integer.parseInt(splitDate[1]);
+        int year = Integer.parseInt(splitDate[2]);
+
+        Date dateObj = new Date(year, month, day);
+        if (!dateObj.isValid()) return null;
+
+        return dateObj;
+    }
+
+    /**
+     * Validate a date
+     *
+     * @param date the date to validate
+     * @return true if valid, false otherwise
+     */
+    private boolean dateIsValid(Date date, String dateStr) {
+        if (date == null) {
+            output.appendText(String.format("DOB invalid: %s not a" +
+                    " valid calendar date!%n", dateStr));
+            return false;
+        }
+
+        if (date.isToday() || date.isInFuture()) {
+            output.appendText(String.format("DOB invalid: %s cannot" +
+                    " be today or a future day.%n", dateStr));
+            return false;
+        }
+        return true;
     }
 
 

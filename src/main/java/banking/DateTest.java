@@ -1,4 +1,4 @@
-package transactionmanager;
+package banking;
 
 import org.junit.Test;
 

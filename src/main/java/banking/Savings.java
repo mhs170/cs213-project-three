@@ -1,4 +1,4 @@
-package transactionmanager;
+package banking;
 
 /**
  * Savings account class with constants for different fees and rates

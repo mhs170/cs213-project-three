@@ -4,9 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52ec96d8-df8c-4dd6-9e50-cda9a7d3498e" name="Changes" comment="add output text area">
+    <list default="true" id="52ec96d8-df8c-4dd6-9e50-cda9a7d3498e" name="Changes" comment="initial try/catch format for submit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/banking/TransactionManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/TransactionManagerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/transactionmanager/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/transactionmanager/AccountDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/AccountDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/transactionmanager/AccountDatabaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/AccountDatabaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/transactionmanager/Campus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/Campus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/transactionmanager/Checking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/Checking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/transactionmanager/CollegeChecking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/CollegeChecking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/transactionmanager/Date.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/Date.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/transactionmanager/DateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/DateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/transactionmanager/MoneyMarket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/MoneyMarket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/transactionmanager/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/transactionmanager/Savings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/Savings.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +124,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698670944550</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="initial try/catch format for submit">
+      <option name="closed" value="true" />
+      <created>1698671254953</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1698671254953</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -134,7 +153,8 @@
     <MESSAGE value="combine actions into one screen for efficiency" />
     <MESSAGE value="implement method to clear form" />
     <MESSAGE value="add output text area" />
-    <option name="LAST_COMMIT_MESSAGE" value="add output text area" />
+    <MESSAGE value="initial try/catch format for submit" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial try/catch format for submit" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

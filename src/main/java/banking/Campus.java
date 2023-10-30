@@ -1,4 +1,4 @@
-package transactionmanager;
+package banking;
 
 /**
  * Enum class for representing 3 campuses
