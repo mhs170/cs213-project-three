@@ -123,6 +123,7 @@ public class TransactionManagerController {
     public void onAccountSelect(ActionEvent event) {
         String selectedType = accountTypePicker.getValue();
 
+        //enable campus picker for a college checking account
         if(selectedType.equals("College Checking")) {
             campusPicker.setDisable(false);
         }
@@ -131,6 +132,7 @@ public class TransactionManagerController {
             campusPicker.setValue("New Brunswick");
         }
 
+        //enable isLoyal checkbox for a savings account
         if(selectedType.equals("Savings")) {
             loyaltyCheckbox.setDisable(false);
         }
@@ -154,7 +156,12 @@ public class TransactionManagerController {
 
     @FXML
     public void submit(ActionEvent event) {
-        output.appendText("Submit button clicked\n");
+        try {
+            Double amount = Double.parseDouble(amountField.getText());
+        }
+        catch(NumberFormatException exp) {
+            output.appendText("Error: Amount must be a number.");
+        }
     }
 
 

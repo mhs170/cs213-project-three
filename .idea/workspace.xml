@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52ec96d8-df8c-4dd6-9e50-cda9a7d3498e" name="Changes" comment="implement method to clear form">
+    <list default="true" id="52ec96d8-df8c-4dd6-9e50-cda9a7d3498e" name="Changes" comment="add output text area">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/banking/TransactionManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/TransactionManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banking/TransactionManagerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/TransactionManagerMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/banking/TransactionManagerView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/banking/TransactionManagerView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +105,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698670560879</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add output text area">
+      <option name="closed" value="true" />
+      <created>1698670944550</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1698670944550</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -127,7 +133,8 @@
     <MESSAGE value="add account type dropdown to ui" />
     <MESSAGE value="combine actions into one screen for efficiency" />
     <MESSAGE value="implement method to clear form" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement method to clear form" />
+    <MESSAGE value="add output text area" />
+    <option name="LAST_COMMIT_MESSAGE" value="add output text area" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
