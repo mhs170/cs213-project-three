@@ -3,47 +3,70 @@ package banking;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 
 public class TransactionManagerController {
 
     @FXML
-    private ChoiceBox<String> accountTypePicker1;
+    private ChoiceBox<String> actionPicker;
+
+    @FXML
+    private ChoiceBox<String> accountTypePicker;
+
+    @FXML
+    private Text campusLabel;
 
     @FXML
     private ChoiceBox<String> campusPicker;
 
     @FXML
-    private DatePicker dobPicker1;
+    private DatePicker dobPicker;
 
     @FXML
-    private TextField firstNameField1;
+    private TextField firstNameField;
 
     @FXML
-    private TextField lastNameField1;
+    private TextField lastNameField;
 
     @FXML
     private CheckBox loyaltyCheckbox;
 
     @FXML
-    private Button openButton;
+    private Text amountLabel;
+
+    @FXML
+    private TextField amountField;
+
+    @FXML
+    private Button submitButton;
+
+    @FXML
+    private Button clearButton;
 
     @FXML
     public void initialize() {
 
+        String[] actionTypes = {
+                "Open", "Close", "Deposit", "Withdraw"
+        };
         String[] accountTypes = {
                 "Checking", "College Checking", "Savings", "Money Market"
         };
-
         String[] campusTypes = {
                 "New Brunswick", "Newark", "Camden"
         };
 
-        //initialize account type dropdown
-        accountTypePicker1.getItems().addAll(accountTypes);
+        //initialize action type dropdown
+        actionPicker.getItems().addAll(actionTypes);
         //default value
-        accountTypePicker1.setValue("Checking");
+        actionPicker.setValue("Open");
         //register handler manually
-        accountTypePicker1.setOnAction(this::onAccountSelect);
+        actionPicker.setOnAction(this::onActionSelect);
+
+        //initialize account type dropdown
+        accountTypePicker.getItems().addAll(accountTypes);
+        accountTypePicker.setValue("Checking");
+        accountTypePicker.setOnAction(this::onAccountSelect);
 
         //initialize campus dropdown
         campusPicker.getItems().addAll(campusTypes);
@@ -51,8 +74,48 @@ public class TransactionManagerController {
 
     }
 
-   public void onAccountSelect(ActionEvent event) {
-        String selectedType = accountTypePicker1.getValue();
+    public void onActionSelect(ActionEvent event) {
+        String action = actionPicker.getValue();
+
+        //change the ui to match which action is selected
+        //make fields visible or invisible
+        switch(action) {
+            case "Open" -> {
+                campusPicker.setVisible(true);
+                campusLabel.setVisible(true);
+                loyaltyCheckbox.setVisible(true);
+                amountLabel.setVisible(true);
+                amountField.setVisible(true);
+                amountLabel.setText("Initial Amount");
+            }
+            case "Close" -> {
+                campusPicker.setVisible(false);
+                campusLabel.setVisible(false);
+                loyaltyCheckbox.setVisible(false);
+                amountLabel.setVisible(false);
+                amountField.setVisible(false);
+            }
+            case "Deposit" -> {
+                campusPicker.setVisible(false);
+                campusLabel.setVisible(false);
+                loyaltyCheckbox.setVisible(false);
+                amountLabel.setVisible(true);
+                amountField.setVisible(true);
+                amountLabel.setText("Deposit Amount");
+            }
+            case "Withdraw" -> {
+                campusPicker.setVisible(false);
+                campusLabel.setVisible(false);
+                loyaltyCheckbox.setVisible(false);
+                amountLabel.setVisible(true);
+                amountField.setVisible(true);
+                amountLabel.setText("Withdraw Amount");
+            }
+        }
+    }
+
+    public void onAccountSelect(ActionEvent event) {
+        String selectedType = accountTypePicker.getValue();
 
         if(selectedType.equals("College Checking")) {
             campusPicker.setDisable(false);
@@ -69,10 +132,15 @@ public class TransactionManagerController {
             loyaltyCheckbox.setDisable(true);
             loyaltyCheckbox.setSelected(false);
         }
-   }
+    }
 
     @FXML
-    void openAccount(ActionEvent event) {
+    void submit(ActionEvent event) {
+        System.out.println("Submit button clicked!");
+    }
 
+    @FXML
+    void clear(ActionEvent event) {
+        System.out.println("Clear button clicked!");
     }
 }
