@@ -18,8 +18,8 @@ public class TransactionManagerMain extends Application {
         stage.setScene(scene);
         stage.show();
         //prevent window from being too small
-        stage.setMinWidth(650);
-        stage.setMinHeight(650);
+        stage.setMinWidth(680);
+        stage.setMinHeight(700);
     }
 
     public static void main(String[] args) {

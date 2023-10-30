@@ -44,6 +44,9 @@ public class TransactionManagerController {
     private Button clearButton;
 
     @FXML
+    private TextArea output;
+
+    @FXML
     public void initialize() {
 
         String[] actionTypes = {
@@ -151,7 +154,7 @@ public class TransactionManagerController {
 
     @FXML
     public void submit(ActionEvent event) {
-        System.out.println("Submit button clicked!");
+        output.appendText("Submit button clicked\n");
     }
 
 
