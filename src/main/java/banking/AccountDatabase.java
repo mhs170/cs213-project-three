@@ -1,5 +1,7 @@
 package banking;
+
 import java.text.DecimalFormat;
+
 /**
  * Account database for storing accounts with helper methods for
  * opening, closing, finding accounts, etc.
@@ -71,18 +73,18 @@ public class AccountDatabase {
         }
 
         //can't have both a C and CC account:
-        if(account instanceof CollegeChecking) {
+        if (account instanceof CollegeChecking) {
             Checking account2 = new Checking(
                     account.getHolder(), account.getBalance()
             );
-            if(contains(account2)) return false;
+            if (contains(account2)) return false;
         }
-        if(account instanceof Checking) {
+        if (account instanceof Checking) {
             CollegeChecking account2 = new CollegeChecking(
                     account.getHolder(), account.getBalance(),
                     Campus.NEW_BRUNSWICK
             );
-            if(contains(account2)) return false;
+            if (contains(account2)) return false;
         }
 
         if (numAcct == accounts.length) {
@@ -151,6 +153,7 @@ public class AccountDatabase {
 
     /**
      * Deposit to an account
+     *
      * @param account dummyAccount with important details
      * @return true if deposited, false if amount incorrect
      */
@@ -164,13 +167,17 @@ public class AccountDatabase {
      * Method to display all the accounts in the account database, sorted
      * by the account types. For the same account type, sort by the account
      * holder’s profile (last name, first name and dob.)
+     *
+     * @return list of accounts
      */
-    public void printSorted() {
+    public String printSorted() {
         if (numAcct == 0) {
-            System.out.println("Account Database is empty!");
-            return;
+            return "Account Database is empty!";
         }
-        System.out.println("\n*Accounts sorted by account type and profile.");
+
+        StringBuilder result = new StringBuilder("\n*Accounts sorted by " +
+                "account type and profile.\n");
+
         for (int i = 0; i < numAcct - 1; i++) {
             for (int j = 0; j < numAcct - i - 1; j++) {
                 if (compareAccountType(accounts[j], accounts[j + 1]) > 0) {
@@ -180,11 +187,14 @@ public class AccountDatabase {
                 }
             }
         }
+
         for (int i = 0; i < numAcct; i++) {
-            System.out.println(accounts[i]);
+            result.append(accounts[i].toString()).append("\n");
         }
-        System.out.println("*end of list.\n");
-    } //sort by account type and profile
+
+        result.append("*end of list.\n");
+        return result.toString();
+    }
 
     /**
      * Method that compares two account types alphabetically
@@ -210,14 +220,18 @@ public class AccountDatabase {
      * Method to display all the accounts in the account database, the same
      * order with the P command. In addition, display the calculated fees
      * and monthly interests based on current account balances.
+     *
+     * @return list of accounts
      */
-    public void printFeesAndInterests() {
+    public String printFeesAndInterests() {
         DecimalFormat correctFormat = new DecimalFormat("0.00");
         if (numAcct == 0) {
-            System.out.println("Account Database is empty!");
-            return;
+            return "Account Database is empty!";
         }
-        System.out.println("\n*list of accounts with fee and monthly interest");
+
+        StringBuilder result = new StringBuilder("\n*list of accounts with " +
+                "fee and monthly interest\n");
+
         for (int i = 0; i < numAcct - 1; i++) {
             for (int j = 0; j < numAcct - i - 1; j++) {
                 if (compareAccountType(accounts[j], accounts[j + 1]) > 0) {
@@ -227,56 +241,39 @@ public class AccountDatabase {
                 }
             }
         }
+
         for (int i = 0; i < numAcct; i++) {
             String accountType = accounts[i].getClass().getSimpleName();
-            if (accountType.equals("Checking")) {
-                System.out.printf("%s::fee $%s::monthly interest $%s",
+            if (accountType.equals("Checking") || accountType.equals(
+                    "CollegeChecking") || accountType.equals("Savings")
+                    || accountType.equals("MoneyMarket")) {
+                result.append(String.format("%s::fee $%s::monthly interest " +
+                                "$%s\n",
                         accounts[i],
                         correctFormat.format(accounts[i].getMonthlyFee()),
                         correctFormat.format(accounts[i]
-                                .getMonthlyInterest()));
-                System.out.println();
-            }
-            if (accountType.equals(
-                    "CollegeChecking")) {
-                System.out.printf("%s::fee $%s::monthly interest $%s",
-                        accounts[i],
-                        correctFormat.format(accounts[i].getMonthlyFee()),
-                        correctFormat.format(accounts[i]
-                                .getMonthlyInterest()));
-                System.out.println();
-            }
-            if (accountType.equals("Savings")) {
-                System.out.printf("%s::fee $%s::monthly interest $%s",
-                        accounts[i],
-                        correctFormat.format(accounts[i].getMonthlyFee()),
-                        correctFormat.format(accounts[i]
-                                .getMonthlyInterest()));
-                System.out.println();
-            }
-            if (accountType.equals("MoneyMarket")) {
-                System.out.printf("%s::fee $%s::monthly interest $%s",
-                        accounts[i],
-                        correctFormat.format(accounts[i].getMonthlyFee()),
-                        correctFormat.format(accounts[i]
-                                .getMonthlyInterest()));
-                System.out.println();
+                                .getMonthlyInterest())));
             }
         }
-        System.out.println("*end of list.\n");
+
+        result.append("*end of list.\n");
+        return result.toString();
     }
+
 
     /**
      * Method to update and display the account balance for all accounts by
      * applying the fees and interests earned.
+     * @return list of accounts
      */
-    public void printUpdatedBalances() {
+    public String printUpdatedBalances() {
         if (numAcct == 0) {
-            System.out.println("Account Database is empty!");
-            return;
+            return "Account Database is empty!";
         }
-        System.out.println("\n*list of accounts with fees and interests " +
-                "applied.");
+
+        StringBuilder result = new StringBuilder("\n*list of accounts with " +
+                "fees and interests applied.\n");
+
         for (int i = 0; i < numAcct - 1; i++) {
             for (int j = 0; j < numAcct - i - 1; j++) {
                 if (compareAccountType(accounts[j], accounts[j + 1]) > 0) {
@@ -286,14 +283,17 @@ public class AccountDatabase {
                 }
             }
         }
+
         for (int i = 0; i < numAcct; i++) {
             accounts[i].balance += accounts[i].getMonthlyInterest();
             accounts[i].balance -= accounts[i].getMonthlyFee();
-            if (accounts[i] instanceof MoneyMarket){
+            if (accounts[i] instanceof MoneyMarket) {
                 ((MoneyMarket) accounts[i]).setWithdrawals(0);
             }
-            System.out.println(accounts[i]);
+            result.append(accounts[i].toString()).append("\n");
         }
-        System.out.println("*end of list.\n");
-    } //apply the interests/fees
+
+        result.append("*end of list.\n");
+        return result.toString();
+    }
 }

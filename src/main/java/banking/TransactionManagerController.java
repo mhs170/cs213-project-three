@@ -5,6 +5,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Calendar;
+import java.util.Scanner;
+
 public class TransactionManagerController {
 
     private AccountDatabase database;
@@ -620,14 +625,18 @@ public class TransactionManagerController {
         //runs when printAll button is clicked
 
         //print to output on second tab
-        print(outputTwo, "Test");
-        printFormatted(outputTwo, "Test %d", 1);
+        print(outputTwo, database.printSorted());
+
+
     }
 
-    public void printInterestsAndFees() {}
+    public void printInterestsAndFees() {
+        print(outputTwo, database.printFeesAndInterests());
+    }
 
-    public void updateInterestsAndFees() {}
+    public void updateInterestsAndFees() {
+        print(outputTwo, database.printUpdatedBalances());
+    }
 
     public void loadFromFile () {}
-
 }
