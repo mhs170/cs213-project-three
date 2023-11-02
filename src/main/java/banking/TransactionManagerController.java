@@ -643,9 +643,8 @@ public class TransactionManagerController {
     }
 
     public void loadFromFile() throws FileNotFoundException {
-        File file = new File("/Users/mohammed/Downloads/cs213-project-three" +
-                "/bankAccounts.txt");
-        Scanner sc = new Scanner(file);
+        String fileName = "bankAccounts.txt";
+        Scanner sc = new Scanner(new File(fileName));
         while (sc.hasNextLine()) {
             String line = sc.nextLine();
             String[] input = line.split(",");
