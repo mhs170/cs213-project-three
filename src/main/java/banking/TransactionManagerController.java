@@ -625,6 +625,11 @@ public class TransactionManagerController {
 
     //*** SECOND TAB ***//
 
+    /**
+     * Method to display all the accounts in the account database, sorted
+     * by the account types. For the same account type, sort by the account
+     * holder’s profile (last name, first name and dob.)
+     */
     public void printAll() {
         //runs when printAll button is clicked
 
@@ -634,10 +639,19 @@ public class TransactionManagerController {
 
     }
 
+    /**
+     * Method to display all the accounts in the account database, the same
+     * order as the P command. In addition, display the calculated fees
+     * and monthly interests based on current account balances.
+     */
     public void printInterestsAndFees() {
         print(outputTwo, database.printFeesAndInterests());
     }
 
+    /**
+     * Method to update and display the account balance for all accounts by
+     * applying the fees and interests earned.
+     */
     public void updateInterestsAndFees() {
         print(outputTwo, database.printUpdatedBalances());
     }
