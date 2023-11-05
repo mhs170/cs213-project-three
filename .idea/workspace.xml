@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52ec96d8-df8c-4dd6-9e50-cda9a7d3498e" name="Changes" comment="Load file">
+    <list default="true" id="52ec96d8-df8c-4dd6-9e50-cda9a7d3498e" name="Changes" comment="notes for methods">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/banking/TransactionManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/TransactionManagerController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -176,7 +177,23 @@
       <option name="project" value="LOCAL" />
       <updated>1698883376926</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="fixed file name">
+      <option name="closed" value="true" />
+      <created>1698883754452</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1698883754452</updated>
+    </task>
+    <task id="LOCAL-00017" summary="notes for methods">
+      <option name="closed" value="true" />
+      <created>1698884572432</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1698884572432</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -205,7 +222,9 @@
     <MESSAGE value="finish deposit and withdraw" />
     <MESSAGE value="Print button implementation" />
     <MESSAGE value="Load file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Load file" />
+    <MESSAGE value="fixed file name" />
+    <MESSAGE value="notes for methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="notes for methods" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

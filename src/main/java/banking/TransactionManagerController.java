@@ -408,6 +408,12 @@ public class TransactionManagerController {
             );
             return;
         }
+        if (accountType.equals("College Checking")){
+            if (!underTwentyFour(dateOfBirth)){
+                print(output, "DOB invalid: " + dateOfBirth + " over 24.");
+                return;
+            }
+        }
 
         Profile profile = new Profile(firstName, lastName, dateOfBirth);
         Account account = switch (accountType) {
@@ -607,7 +613,6 @@ public class TransactionManagerController {
             case "Money Market" -> dummy = new MoneyMarket(
                     profile, amount, false, 0);
             default -> {
-                System.out.println("Invalid account type.");
                 return;
             }
         }
@@ -734,17 +739,14 @@ public class TransactionManagerController {
             int campusCode,
             AccountDatabase database
     ) {
-        if (!underTwentyFour(dateOfBirth)) {
-            System.out.println("DOB invalid: " + dateOfBirth + " over 24.");
-            return;
-        }
+
         Campus campus;
         switch (campusCode) {
             case 0 -> campus = Campus.NEW_BRUNSWICK;
             case 1 -> campus = Campus.NEWARK;
             case 2 -> campus = Campus.CAMDEN;
             default -> {
-                System.out.println("Invalid campus code.");
+                print(output, "Invalid campus code.");
                 return;
             }
         }
@@ -778,7 +780,7 @@ public class TransactionManagerController {
         } else if (loyalCustomer == 1) {
             isLoyal = true;
         } else {
-            System.out.println("Invalid command.");
+            print(output, "Invalid command.");
             return;
         }
         Profile profile = new Profile(firstName, lastName, dateOfBirth);
@@ -803,9 +805,7 @@ public class TransactionManagerController {
             AccountDatabase database
     ) {
         if (initialDeposit < 2000.00) {
-            System.out.println(
-                    "Minimum of $2000 to open a Money Market account."
-            );
+            print(output, "Minimum of $2000 to open a Money Market account.");
             return;
         }
         Profile profile = new Profile(firstName, lastName, dateOfBirth);
