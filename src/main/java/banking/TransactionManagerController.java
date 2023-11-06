@@ -11,6 +11,10 @@ import java.io.FileNotFoundException;
 import java.util.Calendar;
 import java.util.Scanner;
 
+/**
+ * This controller class handles events from the UI.
+ * @author Mohammed Salama, Dakshal Panicker
+ */
 public class TransactionManagerController {
 
     private AccountDatabase database;
@@ -71,8 +75,11 @@ public class TransactionManagerController {
     @FXML
     private TextArea outputTwo;
 
+    /**
+     * Setup method to initialize accountdatabase and dropdowns
+     */
     @FXML
-    public void initialize() { //runs automatically at the start
+    public void initialize() {
 
         //create database
         database = new AccountDatabase(new Account[]{}, 0);
@@ -107,6 +114,11 @@ public class TransactionManagerController {
 
     }
 
+    /**
+     * Event handler for action-select dropdown
+     * Allows users to choose from "open" "close" "deposit" "withdraw"
+     * @param event the dropdown select event
+     */
     public void onActionSelect(ActionEvent event) {
         String action = actionPicker.getValue();
 
@@ -150,6 +162,10 @@ public class TransactionManagerController {
         }
     }
 
+    /**
+     * Event handler for account select dropdown
+     * @param event the choicebox select event
+     */
     public void onAccountSelect(ActionEvent event) {
         String selectedType = accountTypePicker.getValue();
 
@@ -170,6 +186,10 @@ public class TransactionManagerController {
         }
     }
 
+    /**
+     * Event handler for clear button, clears the form
+     * @param event button select event
+     */
     @FXML
     public void clear(ActionEvent event) {
         firstNameField.clear();
@@ -182,6 +202,11 @@ public class TransactionManagerController {
         amountField.clear();
     }
 
+    /**
+     * Event handler for submit button, submits form and
+     * runs the resulting logic
+     * @param event button click event
+     */
     @FXML
     public void submit(ActionEvent event) {
         try {
