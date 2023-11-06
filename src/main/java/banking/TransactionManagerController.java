@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -662,8 +663,17 @@ public class TransactionManagerController {
     }
 
     public void loadFromFile() throws FileNotFoundException {
-        String fileName = "bankAccounts.txt";
-        Scanner sc = new Scanner(new File(fileName));
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select text file to use");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Text Files", "*.txt")
+        );
+        File file = fileChooser.showOpenDialog(loadFromFileButton.getScene().getWindow());
+        if(file == null) {
+            print(outputTwo, "No file selected.");
+            return;
+        }
+        Scanner sc = new Scanner(file);
         while (sc.hasNextLine()) {
             String line = sc.nextLine();
             String[] input = line.split(",");
@@ -699,6 +709,8 @@ public class TransactionManagerController {
             }
         }
         sc.close();
+        //print all accounts to show that they have been loaded
+        printAll();
     }
 
     /**
