@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="52ec96d8-df8c-4dd6-9e50-cda9a7d3498e" name="Changes" comment="add file chooser dialog so user can select the appropriate text file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/banking/TransactionManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banking/TransactionManagerController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
